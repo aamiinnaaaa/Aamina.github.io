@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art & Words</title>
+<style>
+:root {
+  --ink:#292622; --muted:#77716a; --paper:#f7f3ed; --card:#fffdf9;
+  --line:#e7dfd4; --accent:#9a7b68;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family: Georgia, "Times New Roman", serif; color:var(--ink); background:var(--paper); }
+header { position:sticky; top:0; z-index:5; backdrop-filter:blur(14px); background:rgba(247,243,237,.92); border-bottom:1px solid var(--line); }
+.nav { max-width:1200px; margin:auto; padding:18px 24px; display:flex; gap:22px; align-items:center; }
+.logo { font-size:25px; letter-spacing:.04em; white-space:nowrap; }
+.search { flex:1; max-width:520px; margin:auto; position:relative; }
+.search input { width:100%; border:1px solid var(--line); background:#fffaf4; border-radius:28px; padding:13px 18px 13px 44px; font:15px Arial,sans-serif; outline:none; }
+.search span { position:absolute; left:17px; top:10px; font:20px Arial,sans-serif; color:#8a8178; }
+.hero { max-width:1200px; margin:auto; padding:70px 24px 35px; text-align:center; }
+.kicker { text-transform:uppercase; letter-spacing:.18em; font:11px Arial,sans-serif; color:var(--accent); }
+h1 { font-size:clamp(42px,7vw,78px); font-weight:400; margin:14px 0 10px; line-height:.98; }
+.hero p { color:var(--muted); max-width:600px; margin:0 auto; font-size:17px; line-height:1.7; }
+.filters { max-width:1200px; margin:10px auto 28px; padding:0 24px; display:flex; gap:9px; flex-wrap:wrap; }
+.filter { border:1px solid var(--line); background:transparent; border-radius:22px; padding:9px 15px; cursor:pointer; font:13px Arial,sans-serif; color:#625b54; }
+.filter.active { background:var(--ink); color:white; border-color:var(--ink); }
+.grid { max-width:1200px; margin:auto; padding:0 24px 70px; columns:4 240px; column-gap:18px; }
+.card { break-inside:avoid; margin:0 0 18px; background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 5px 18px rgba(50,40,30,.05); }
+.image-wrap { position:relative; }
+.card img { width:100%; display:block; height:auto; }
+.save { position:absolute; right:11px; top:11px; width:38px; height:38px; border:0; border-radius:50%; background:rgba(255,253,249,.9); font-size:22px; cursor:pointer; }
+.save.saved { background:var(--ink); color:white; }
+.card-body { padding:14px 15px 17px; }
+.tag { font:10px Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+h3 { margin:7px 0 5px; font-size:20px; font-weight:400; }
+.card p { margin:0; color:var(--muted); font-size:14px; line-height:1.5; }
+footer { text-align:center; padding:28px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+.empty { display:none; text-align:center; padding:50px; color:var(--muted); }
+@media(max-width:650px) {
+  .nav { padding:14px 15px; flex-wrap:wrap; }
+  .logo { width:100%; text-align:center; }
+  .search { order:2; width:100%; }
+  .hero { padding:48px 18px 25px; }
+  .filters,.grid { padding-left:15px; padding-right:15px; }
+  .grid { columns:2 150px; column-gap:12px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">Art & Words</div>
+    <div class="search"><span>⌕</span><input id="search" placeholder="Search paintings & quotes…" autocomplete="off"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">a little gallery of things felt</div>
+  <h1>Where art speaks,<br>and words stay.</h1>
+  <p>Paintings, sketches and quiet thoughts — collected in one little corner of the internet.</p>
+</section>
+
+<div class="filters">
+  <button class="filter active" data-filter="all">All</button>
+  <button class="filter" data-filter="painting">Paintings</button>
+  <button class="filter" data-filter="drawing">Drawings</button>
+  <button class="filter" data-filter="quote">Quotes</button>
+</div>
+
+<main class="grid" id="grid">
+
+      <article class="card" data-title="quiet faith" data-category="quote">
+        <div class="image-wrap">
+          <img src="images/art1.jpg" alt="Quiet Faith">
+          <button class="save" aria-label="Save Quiet Faith">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">quote</span>
+          <h3>Quiet Faith</h3>
+          <p>I exist between my flaws and Allah&#x27;s endless forgiveness.</p>
+        </div>
+      </article>
+    
+      <article class="card" data-title="between mind &amp; heart" data-category="drawing">
+        <div class="image-wrap">
+          <img src="images/art2.jpg" alt="Between Mind &amp; Heart">
+          <button class="save" aria-label="Save Between Mind &amp; Heart">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">drawing</span>
+          <h3>Between Mind &amp; Heart</h3>
+          <p>A pencil study of the space between thought and feeling.</p>
+        </div>
+      </article>
+    
+      <article class="card" data-title="all roads" data-category="quote">
+        <div class="image-wrap">
+          <img src="images/art3.jpg" alt="All Roads">
+          <button class="save" aria-label="Save All Roads">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">quote</span>
+          <h3>All Roads</h3>
+          <p>All roads lead to &#x27;wen kya he kow karith&#x27;.</p>
+        </div>
+      </article>
+    
+      <article class="card" data-title="live in the moment" data-category="painting">
+        <div class="image-wrap">
+          <img src="images/art4.jpg" alt="Live in the Moment">
+          <button class="save" aria-label="Save Live in the Moment">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">painting</span>
+          <h3>Live in the Moment</h3>
+          <p>A small painted world, made by hand.</p>
+        </div>
+      </article>
+    
+      <article class="card" data-title="a face in graphite" data-category="drawing">
+        <div class="image-wrap">
+          <img src="images/art5.jpg" alt="A Face in Graphite">
+          <button class="save" aria-label="Save A Face in Graphite">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">drawing</span>
+          <h3>A Face in Graphite</h3>
+          <p>Portrait study — graphite on paper.</p>
+        </div>
+      </article>
+    
+      <article class="card" data-title="mind &amp; heart" data-category="drawing">
+        <div class="image-wrap">
+          <img src="images/art6.jpg" alt="Mind &amp; Heart">
+          <button class="save" aria-label="Save Mind &amp; Heart">♡</button>
+        </div>
+        <div class="card-body">
+          <span class="tag">drawing</span>
+          <h3>Mind &amp; Heart</h3>
+          <p>When logic and feeling meet on one page.</p>
+        </div>
+      </article>
+    
+</main>
+<div class="empty" id="empty">Nothing found yet. Try another word. ♡</div>
+
+<footer>Made with art, words & a little bit of wonder.</footer>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+const filters = [...document.querySelectorAll('.filter')];
+const search = document.getElementById('search');
+const empty = document.getElementById('empty');
+let current = 'all';
+
+function update() {
+  const q = search.value.toLowerCase().trim();
+  let shown = 0;
+  cards.forEach(card => {
+    const okCat = current === 'all' || card.dataset.category === current;
+    const okText = !q || card.dataset.title.includes(q) || card.innerText.toLowerCase().includes(q);
+    const show = okCat && okText;
+    card.style.display = show ? '' : 'inline-block';
+    if (show) shown++;
+  });
+  empty.style.display = shown ? 'none' : 'block';
+}
+
+filters.forEach(btn => btn.addEventListener('click', () => {
+  filters.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  current = btn.dataset.filter;
+  update();
+}));
+search.addEventListener('input', update);
+
+document.querySelectorAll('.save').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('saved');
+    btn.textContent = btn.classList.contains('saved') ? '♥' : '♡';
+  });
+});
+</script>
+</body>
+</html>
